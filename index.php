@@ -1,5 +1,5 @@
 <?php
-function strToBin1($input)
+function strToBin($input)
 {
     if (!is_string($input))
         return false;
@@ -10,25 +10,18 @@ function strToBin1($input)
     foreach ($chunks as $key => $chunk)
     {
         $temp = base_convert($chunk, 16, 2);
-        // $test = substr($temp, 3, 3);
-        // $a = ltrim($test, 0);
-
-        // if($key !== 0){
-            $repeat = str_repeat("0", 8 - strlen($temp)) . $temp;
-            $ret .= $repeat;
-        // } else {
-        //     $ret .= $temp . ' ';
-        // }
+        $repeat = str_repeat("0", 8 - strlen($temp)) . $temp;
+        $ret .= $repeat;
     }
     return $ret;
 }
 
+// function binToNrz($)
+
 echo "Masukan Kata - Kata : ";
 $kata2 = trim(fgets(STDIN));
-// $kata2 = "HELLO WORLD";
-$binary = strToBin1($kata2);
+$binary = strToBin($kata2);
 $array_binary = str_split($binary, 4);
-// var_dump($array_binary);
 $bilangan_dump = 0;
 $dump_binary = null;
 $hasil = '';
@@ -43,4 +36,4 @@ foreach ($array_binary as $key => $value) {
     $hasil .= $dump_binary;
 }
 
-echo $hasil;
+echo "Hasil => " . $hasil;
